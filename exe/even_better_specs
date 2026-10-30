@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "even_better_specs"
+
+# --config makes RuboCop ignore the project's own .rubocop.yml (if any).
+exit RuboCop::CLI.new.run(["--config", EvenBetterSpecs::CONFIG, *ARGV])

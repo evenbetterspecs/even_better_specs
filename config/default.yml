@@ -1,0 +1,116 @@
+# Even Better Specs: https://evenbetterspecs.github.io
+plugins:
+  - rubocop-rspec
+
+AllCops:
+  DisabledByDefault: true
+  NewCops: disable
+  SuggestExtensions: false
+  Include:
+    - "**/*_spec.rb"
+
+# Describe what you are testing
+RSpec/DescribeClass:
+  Enabled: true
+  # Unlike rubocop-rspec's default, request specs must describe the controller constant.
+  Exclude:
+    - "**/spec/features/**/*"
+    - "**/spec/routing/**/*"
+    - "**/spec/system/**/*"
+    - "**/spec/views/**/*"
+  IgnoredMetadata:
+    type:
+      - routing
+      - view
+      - feature
+      - system
+      - aruba
+      - task
+EvenBetterSpecs/DescribeMethod:
+  Description: Nested `describe` blocks name a method using `.` or `#`.
+  Enabled: true
+
+# Use contexts
+RSpec/ContextMethod:
+  Enabled: true
+RSpec/ContextWording:
+  Enabled: true
+  Prefixes:
+    - when
+
+# Factories, not fixtures
+EvenBetterSpecs/FactoriesNotFixtures:
+  Description: Use factories instead of fixtures.
+  Enabled: true
+
+# Leverage described class
+RSpec/DescribedClass:
+  Enabled: true
+
+# Use subject
+EvenBetterSpecs/UseSubject:
+  Description: Use `subject` instead of `described_class.new` without arguments.
+  Enabled: true
+
+# Short description
+EvenBetterSpecs/ShortDescription:
+  Description: Descriptions are short and on a single line.
+  Enabled: true
+  Max: 100
+
+# Group expectations
+EvenBetterSpecs/GroupExpectations:
+  Description: Sibling examples with the same setup are merged into one.
+  Enabled: true
+
+# All possible cases
+EvenBetterSpecs/AllPossibleCases:
+  Description: A `describe` has more than one `context`.
+  Enabled: true
+  # Heuristic: it reports but does not fail the run.
+  Severity: info
+
+# Request vs controller specs
+EvenBetterSpecs/RequestSpecs:
+  Description: Write request specs instead of controller specs.
+  Enabled: true
+
+# Expect vs should syntax
+EvenBetterSpecs/ExpectSyntax:
+  Description: Use `expect` instead of `should`.
+  Enabled: true
+
+# Redundant require
+EvenBetterSpecs/RedundantRequire:
+  Description: Require helpers from `.rspec`, not from each spec file.
+  Enabled: true
+
+# Instance double over double
+RSpec/VerifiedDoubles:
+  Enabled: true
+
+# Let's not
+EvenBetterSpecs/NoLet:
+  Description: Do not use `let` / `let!`.
+  Enabled: true
+
+# Avoid hooks
+EvenBetterSpecs/NoHooks:
+  Description: Avoid hooks.
+  Enabled: true
+
+# Don't use shared examples
+EvenBetterSpecs/NoSharedExamples:
+  Description: Do not use shared examples or shared contexts.
+  Enabled: true
+
+# Stub environment variables
+EvenBetterSpecs/StubEnv:
+  Description: Stub environment variables instead of changing `ENV`.
+  Enabled: true
+
+# Create only the data you need
+EvenBetterSpecs/CreateOnlyNeededData:
+  Description: Do not create more records than the example needs.
+  Enabled: true
+  Max: 3
