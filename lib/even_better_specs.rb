@@ -3,6 +3,8 @@
 require "rubocop"
 require "rubocop-rspec"
 require_relative "even_better_specs/version"
+require_relative "even_better_specs/diff"
+require_relative "even_better_specs/cli"
 
 module EvenBetterSpecs
   CONFIG = File.expand_path("../config/default.yml", __dir__)

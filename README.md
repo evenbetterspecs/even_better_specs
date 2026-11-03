@@ -12,10 +12,18 @@ gem install even_better_specs
 even_better_specs            # checks every *_spec.rb
 even_better_specs spec/models
 even_better_specs -a         # autocorrect what can be autocorrected
+even_better_specs --diff     # only lines changed since HEAD, plus untracked specs
+even_better_specs --diff=develop   # only lines changed since develop (e.g. a whole branch)
 ```
 
 Do not use `bundle exec`, because the gem is not in the Gemfile. The CLI accepts all `rubocop` options.
 It runs with its own config only, so the project's `.rubocop.yml` (if any) is ignored.
+
+`--diff[=BASE]` reports only offenses that start on a line added or changed since `BASE` (default `HEAD`),
+so you are judged on what you wrote, not on the file's legacy. Without paths it inspects the changed spec
+files; with paths it inspects those and still filters by the diff. The exit code counts only the reported
+offenses. An offense that starts on an unchanged line (e.g. an existing `describe` around your new code) is
+not reported. It cannot be combined with autocorrect, which would rewrite lines outside the diff.
 
 ## Rules
 

@@ -6,6 +6,12 @@ and this project follows [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.2.0]
+
+### Added
+
+- `--diff[=BASE]` option: report only offenses on lines changed since a git revision (default `HEAD`).
+
 ## [0.1.0] - 2026-10-30
 
 ### Added
